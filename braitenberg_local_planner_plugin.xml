@@ -1,0 +1,9 @@
+<library path="lib/libbraitenberg_local_planner">
+	<class name="braitenberg_local_planner/BraitenbergLocalPlannerROS" type="braitenberg_local_planner::BraitenbergLocalPlannerROS" base_class_type="nav_core::BaseLocalPlanner">
+		<description>
+			The braitenberg_local_planner package implements a plugin
+			to the base_local_planner of the 2D navigation stack.
+		</description>
+	</class>
+</library>
+
