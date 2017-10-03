@@ -28,8 +28,8 @@ message(STATUS "System: ${CMAKE_SYSTEM}")
 SET(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${PROJECT_SOURCE_DIR}/cmake_modules)
 message(STATUS "${CMAKE_MODULE_PATH}")
 find_package(Boost REQUIRED COMPONENTS system thread graph)
-find_package(SUITESPARSE REQUIRED)
-find_package(G2O REQUIRED)
+# find_package(SUITESPARSE REQUIRED)
+#find_package(G2O REQUIRED)
 
 # Eigen3 FindScript Backward compatibility (ubuntu saucy)
 # Since FindEigen.cmake is deprecated starting from jade.
@@ -97,13 +97,13 @@ endif()
 ##   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
 
 ## Generate messages in the 'msg' folder
-add_message_files(
-  FILES
-  ObstacleMsg.msg
-  TrajectoryPointMsg.msg
-  TrajectoryMsg.msg
-  FeedbackMsg.msg
-)
+# add_message_files(
+#   FILES
+#   ObstacleMsg.msg
+#   TrajectoryPointMsg.msg
+#   TrajectoryMsg.msg
+#   FeedbackMsg.msg
+# )
 
 ## Generate services in the 'srv' folder
 # add_service_files(
@@ -120,16 +120,16 @@ add_message_files(
 # )
 
 ## Generate added messages and services with any dependencies listed here
-generate_messages(
-   DEPENDENCIES
-   geometry_msgs std_msgs
-)
+# generate_messages(
+#    DEPENDENCIES
+#    geometry_msgs std_msgs
+# )
 
 #add dynamic reconfigure api
 #find_package(catkin REQUIRED dynamic_reconfigure)
-generate_dynamic_reconfigure_options(
-  cfg/BraitenbergLocalPlannerReconfigure.cfg
-)
+# generate_dynamic_reconfigure_options(
+#   cfg/BraitenbergLocalPlannerReconfigure.cfg
+# )
 
 
 ###################################
@@ -179,13 +179,7 @@ include_directories(
 ## Build the braitenberg_local_planner library
 
 add_library(braitenberg_local_planner
-   src/timed_elastic_band.cpp
-   src/optimal_planner.cpp
-   src/obstacles.cpp
-   src/visualization.cpp
-   src/recovery_behaviors.cpp
    src/braitenberg_config.cpp
-   src/homotopy_class_planner.cpp
    src/braitenberg_local_planner_ros.cpp
 )
 
@@ -203,13 +197,11 @@ target_link_libraries(braitenberg_local_planner
 
 ## Build additional executables
 
-add_executable(test_optim_node src/test_optim_node.cpp)
-
-target_link_libraries(test_optim_node
-   braitenberg_local_planner
-   ${EXTERNAL_LIBS}
-   ${catkin_LIBRARIES}
-)
+# target_link_libraries(test_optim_node
+#    braitenberg_local_planner
+#    ${EXTERNAL_LIBS}
+#    ${catkin_LIBRARIES}
+# )
 
 
 #############
@@ -230,9 +222,9 @@ target_link_libraries(test_optim_node
 install(TARGETS braitenberg_local_planner
    LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 )
-install(TARGETS test_optim_node
-   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-)
+# install(TARGETS test_optim_node
+#    RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+# )
 
 ## Mark cpp header files for installation
 install(DIRECTORY include/${PROJECT_NAME}/
