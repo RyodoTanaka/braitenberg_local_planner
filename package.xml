@@ -30,7 +30,6 @@
   <depend>dynamic_reconfigure</depend>
   <depend>geometry_msgs</depend>
   <depend>interactive_markers</depend>
-  <depend>libg2o</depend>
   <depend>nav_core</depend>
   <depend>nav_msgs</depend>
   <depend>pluginlib</depend>
